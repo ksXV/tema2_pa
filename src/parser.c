@@ -11,7 +11,7 @@ struct Queue *parseData(FILE *output) {
     size_t fileLength = ftell(output);
     fseek(output, 0, SEEK_SET);
     
-    char data[fileLength + 1];
+    char *data = calloc(sizeof(char), fileLength + 1);
 
     size_t bytesRead = fread(data, sizeof(char), fileLength, output);
     assert(fileLength == bytesRead);
@@ -33,9 +33,8 @@ struct Queue *parseData(FILE *output) {
         newTeam->position = position++;
 
         enqueue(teams, newTeam);
-
         p = strtok(NULL, "\r\n");
     }
-
+    free(data);
     return teams;
 }

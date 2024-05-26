@@ -5,7 +5,6 @@
 #include "src/queue.h"
 #include "src/team.h"
 
-
 int main(int argc, char *argv[]) {
     if (argc != 4) {
         printf("usage: %s [date.in] [output1.out] [output2.out]", argv[0]);
